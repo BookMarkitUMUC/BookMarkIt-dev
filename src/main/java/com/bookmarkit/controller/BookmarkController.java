@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -33,16 +35,11 @@ public class BookmarkController {
     @RequestMapping(value = "/{userId}", method = RequestMethod.POST)
     public Bookmark addBookmark(@PathVariable("userId") Long userId, @RequestBody BookmarkCreateForm form) {
 
-        System.out.println("adding bookmark");
-        System.out.println(form.getUrl());
-        System.out.println(form.getDescription());
-
         User user = userService.getUserById(userId)
                 .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", userId)));
 
         form.setUser(user);
         Bookmark bookmark = bookmarkSerivce.create(form);
-        System.out.println(bookmark);
 
         return bookmark;
     }
@@ -51,6 +48,14 @@ public class BookmarkController {
     public ModelAndView delete(@PathVariable long id){
     	bookmarkSerivce.deleteById(id);
     	return new ModelAndView("redirect:/dashboard");
+    }
+
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    public List<Bookmark> getBookmarks(@PathVariable("userId") Long userId) {
+        User user = userService.getUserById(userId)
+                .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", userId)));
+
+        return user.getBookmarks().orElse(new ArrayList<>());
     }
 
 /*    @RequestMapping("{userId}/view/{bookmarkId}")
