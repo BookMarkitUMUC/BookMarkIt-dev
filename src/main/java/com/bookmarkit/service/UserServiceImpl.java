@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(UserCreateForm form) {
+        System.out.println("in userService create");
         User user = new User();
         user.setUsername(form.getUsername());
         user.setEmail(form.getEmail());

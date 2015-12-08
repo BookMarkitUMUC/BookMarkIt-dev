@@ -8,4 +8,8 @@ import com.bookmarkit.form.BookmarkCreateForm;
  */
 public interface BookmarkSerivce {
     Bookmark create(BookmarkCreateForm bookmarkCreateForm);
+    
+    void deleteById(Long id);
+
+    
 }

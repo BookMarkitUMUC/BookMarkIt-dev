@@ -1,10 +1,11 @@
 package com.bookmarkit.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bookmarkit.domain.Bookmark;
 import com.bookmarkit.form.BookmarkCreateForm;
 import com.bookmarkit.repository.BookmarkRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * Created by 580782 on 11/29/2015.
@@ -29,4 +30,15 @@ public class BookmarkServiceImpl implements BookmarkSerivce {
 
         return bookmarkRepository.save(bookmark);
     }
+
+	@Override
+	public void deleteById(Long id) {
+		
+		bookmarkRepository.deleteById(id);
+		
+	}
+
+
+
+
 }
