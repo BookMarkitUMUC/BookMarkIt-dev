@@ -1,5 +1,6 @@
 package com.bookmarkit.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -13,7 +14,6 @@ import com.bookmarkit.domain.Bookmark;
 
 @Repository
 public interface BookmarkRepository extends CrudRepository<Bookmark, Long> {
-    Optional<Bookmark> findOneById(Long id);
-
-    void deleteById(Long id);
+    Bookmark findOne(Long id);
+    List<Bookmark> findAll();
 }

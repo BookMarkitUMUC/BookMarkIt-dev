@@ -44,11 +44,11 @@ public class BookmarkController {
         return bookmark;
     }
     
-    @RequestMapping(value="/{bookmarkId}/delete", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable long id){
-    	bookmarkSerivce.deleteById(id);
-    	return new ModelAndView("redirect:/dashboard");
-    }
+//    @RequestMapping(value="/{bookmarkId}/delete", method = RequestMethod.GET)
+//    public ModelAndView delete(@PathVariable long id){
+//    	bookmarkSerivce.deleteById(id);
+//    	return new ModelAndView("redirect:/dashboard");
+//    }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public List<Bookmark> getBookmarks(@PathVariable("userId") Long userId) {
