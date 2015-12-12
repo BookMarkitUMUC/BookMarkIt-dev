@@ -16,20 +16,6 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 @EnableWebSecurity
 public class BookMarkItApplication {
 
-/*    @Bean
-    @Profile("testing")
-    public FlywayMigrationStrategy cleanMigrationStrategy() {
-        FlywayMigrationStrategy strategy = new FlywayMigrationStrategy() {
-            @Override
-            public void migrate(Flyway flyway) {
-                flyway.clean();
-                flyway.migrate();
-            }
-        };
-
-        return strategy;
-    }*/
-
 
     public static void main(String[] args) {
         SpringApplication.run(BookMarkItApplication.class, args);
