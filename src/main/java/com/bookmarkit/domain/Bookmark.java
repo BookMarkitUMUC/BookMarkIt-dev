@@ -64,4 +64,10 @@ public class Bookmark {
                 ", description='" + description + '\'' +
                 '}';
     }
+    
+    public void update(final String url, final String description){
+    	this.url = url;
+    	this.description = description;
+    }
+    
 }

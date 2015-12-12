@@ -1,16 +1,19 @@
 package com.bookmarkit.repository;
 
-import com.bookmarkit.domain.Bookmark;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import com.bookmarkit.domain.Bookmark;
 
 /**
  * Created by 580782 on 11/29/2015.
  */
 
 @Repository
-public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
-    Optional<Bookmark> findOneById(Long id);
+public interface BookmarkRepository extends CrudRepository<Bookmark, Long> {
+    Bookmark findOne(Long id);
+    List<Bookmark> findAll();
 }
