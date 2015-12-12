@@ -97,5 +97,6 @@
     <orderEntry type="library" name="Maven: org.webjars:jquery:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:knockout:3.4.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:20030825.184428" level="project" />
   </component>
 </module>

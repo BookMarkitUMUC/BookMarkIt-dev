@@ -1,5 +1,6 @@
 package com.bookmarkit.config;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,33 +16,18 @@ import java.net.URISyntaxException;
 public class DBConfig {
 
     @Bean
-    public DataSource dataSource() {
-        String databaseUrl = System.getenv("DATABASE_URL");
-
-        URI dbUri = null;
-
-        try {
-            dbUri = new URI(databaseUrl);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+    public BasicDataSource dataSource() throws URISyntaxException {
+        URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath();
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
-        org.apache.tomcat.jdbc.pool.DataSource dataSource
-                = new org.apache.tomcat.jdbc.pool.DataSource();
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setUrl(dbUrl);
+        basicDataSource.setUsername(username);
+        basicDataSource.setPassword(password);
 
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl(dbUrl);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        dataSource.setTestOnBorrow(true);
-        dataSource.setTestWhileIdle(true);
-        dataSource.setTestOnReturn(true);
-        dataSource.setValidationQuery("SELECT 1");
-
-        return dataSource;
+        return basicDataSource;
     }
 }
