@@ -64,9 +64,7 @@ public class BookMarkItApplicationTests {
 
     @Test
     public void canGetCreatedUser() throws Exception {
-        this.mockMvc.perform(get("/users/1"))
-                .andExpect(view().name("user/dashboard"));
-                //.andExpect(model().attributeExists(""));
+
     }
 
 
