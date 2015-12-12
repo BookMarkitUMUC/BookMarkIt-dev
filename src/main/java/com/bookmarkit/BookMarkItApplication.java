@@ -30,6 +30,7 @@ public class BookMarkItApplication {
         return strategy;
     }*/
 
+
     public static void main(String[] args) {
         SpringApplication.run(BookMarkItApplication.class, args);
     }
